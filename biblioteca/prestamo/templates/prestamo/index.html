@@ -1,0 +1,14 @@
+<h1>Libros para prestamos</h1>
+{% if libros %}
+    <ul>
+        {% for libro in libros %}
+        <li>
+            <a href="{% url 'prestamo:detalle' libro.id %}">
+                {{libro.libro}}
+            </a>    
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay registros</p>
+{% endif %}

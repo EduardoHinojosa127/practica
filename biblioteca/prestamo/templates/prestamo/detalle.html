@@ -1,0 +1,14 @@
+<h1>{{libro.libro}}</h1>
+{{libro.libro}} prestado a:
+<ul>
+    {% for prestamo in libro.prestamo_set.all %}
+        <li>{{prestamo.alumno}}</li>
+    {% endfor %}
+</ul>
+Nuevo prestamo:
+<form action="{% url 'prestamo:prestar' libro.id %}" method="post">
+    {% csrf_token %}
+    Alumno: <input type="text" name="alumno">
+    <input type="submit" value="Prestar">
+</form>
+<a href="{% url 'prestamo:index' %}">Ver Libros</a>
